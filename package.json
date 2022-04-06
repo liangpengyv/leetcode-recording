@@ -1,0 +1,26 @@
+{
+  "name": "leetcode-recording",
+  "version": "1.0.0",
+  "description": "leetcode recording",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard",
+    "fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liangpengyv/leetcode-recording.git"
+  },
+  "keywords": [
+    "leetcode"
+  ],
+  "author": "liangpengyv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liangpengyv/leetcode-recording/issues"
+  },
+  "homepage": "https://github.com/liangpengyv/leetcode-recording#readme",
+  "devDependencies": {
+    "standard": "^16.0.4"
+  }
+}

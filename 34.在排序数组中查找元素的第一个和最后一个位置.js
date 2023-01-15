@@ -46,7 +46,3 @@ const searchRange = function (nums, target) {
   return [start, end]
 }
 // @lc code=end
-
-const nums = [2]
-const target = 3
-console.log(searchRange(nums, target))

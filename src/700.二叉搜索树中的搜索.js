@@ -20,17 +20,12 @@
  */
 const searchBST = function (root, val) {
   if (root === null) return null
+  if (root.val === val) return root
 
-  const q = [root]
-  while (q.length > 0) {
-    let size = q.length
-    while (size--) {
-      const node = q.shift()
-      if (node.val === val) return node
-      if (node.left) q.push(node.left)
-      if (node.right) q.push(node.right)
-    }
+  if (root.val > val) {
+    return searchBST(root.left, val)
+  } else {
+    return searchBST(root.right, val)
   }
-  return null
 }
 // @lc code=end

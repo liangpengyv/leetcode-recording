@@ -19,20 +19,23 @@
  * @return {ListNode}
  */
 const getIntersectionNode = function (headA, headB) {
-  const hash = []
+  const arr = []
+
   let p = headA
   while (p !== null) {
-    hash.push(p)
+    arr.push(p)
     p = p.next
   }
 
   let q = headB
   while (q !== null) {
-    if (hash.includes(q)) {
+    if (arr.includes(q)) {
       return q
+    } else {
+      q = q.next
     }
-    q = q.next
   }
+
   return null
 }
 // @lc code=end

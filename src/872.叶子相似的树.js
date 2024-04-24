@@ -19,20 +19,21 @@
  * @return {boolean}
  */
 const leafSimilar = function (root1, root2) {
-  const dfs = (node, list) => {
+  const arr1 = []
+  const arr2 = []
+
+  const dfs = (node, arr) => {
     if (!node.left && !node.right) {
-      list.push(node.val)
+      arr.push(node.val)
     } else {
-      if (node.left) dfs(node.left, list)
-      if (node.right) dfs(node.right, list)
+      if (node.left) dfs(node.left, arr)
+      if (node.right) dfs(node.right, arr)
     }
   }
 
-  const list1 = []
-  const list2 = []
-  dfs(root1, list1)
-  dfs(root2, list2)
+  dfs(root1, arr1)
+  dfs(root2, arr2)
 
-  return list1.toString() === list2.toString()
+  return arr1.toString() === arr2.toString()
 }
 // @lc code=end

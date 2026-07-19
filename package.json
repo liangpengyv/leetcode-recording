@@ -1,8 +1,7 @@
 {
   "name": "leetcode-recording",
   "version": "1.0.0",
-  "description": "leetcode recording",
-  "main": "index.js",
+  "description": "Leetcode Recording",
   "scripts": {
     "test": "standard",
     "fix": "standard --fix"

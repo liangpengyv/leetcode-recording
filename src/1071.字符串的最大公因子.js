@@ -13,20 +13,10 @@
 const gcdOfStrings = function (str1, str2) {
   if (str1 + str2 !== str2 + str1) return ''
 
-  const gcd = (l1, l2) => {
-    let remainder = l1 % l2
-    while (remainder !== 0) {
-      l1 = l2
-      l2 = remainder
-      remainder = l1 % l2
-    }
-    return l2
-  }
+  if (str1 === str2) return str1
 
-  return str1.substr(0, gcd(str1.length, str2.length))
+  const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b))
+  const gcdNum = gcd(str1.length, str2.length)
+  return str1.slice(0, gcdNum)
 }
 // @lc code=end
-
-const str1 = 'ABABAB'
-const str2 = 'AB'
-console.log(gcdOfStrings(str1, str2))

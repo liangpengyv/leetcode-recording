@@ -10,6 +10,6 @@
  * @return {string}
  */
 const reverseWords = function (s) {
-  return s.trim().split(/ +/).reverse().join(' ')
+  return s.trim().split(' ').filter(Boolean).reverse().join(' ')
 }
 // @lc code=end

@@ -14,22 +14,21 @@ const increasingTriplet = function (nums) {
     return false
   }
 
-  let first = nums[0]
-  let second = Infinity
+  const leftMin = new Array(nums.length).fill([nums[0]])
+  const rightMax = new Array(nums.length).fill([nums[nums.length - 1]])
 
   for (let i = 1; i < nums.length; i++) {
-    if (nums[i] > second) {
-      return true
-    } else if (nums[i] > first) {
-      second = nums[i]
-    } else {
-      first = nums[i]
-    }
+    leftMin[i] = Math.min(leftMin[i - 1], nums[i])
+  }
+  for (let i = nums.length - 2; i >= 0; i--) {
+    rightMax[i] = Math.max(rightMax[i + 1], nums[i])
   }
 
+  for (let i = 1; i < nums.length - 1; i++) {
+    if (leftMin[i] < nums[i] && nums[i] < rightMax[i]) {
+      return true
+    }
+  }
   return false
 }
 // @lc code=end
-
-const nums = [2, 1, 5, 0, 4, 6]
-console.log(increasingTriplet(nums))

@@ -10,30 +10,25 @@
  * @return {string}
  */
 const reverseVowels = function (s) {
-  const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
-  const list = s.split('')
-  let p1 = 0
-  let p2 = list.length - 1
+  const vowels = new Set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+  const chars = s.split('')
+  let left = 0
+  let right = chars.length - 1
 
-  while (p1 < p2) {
-    if (!vowels.includes(list[p1])) {
-      p1++
-      continue
+  while (left < right) {
+    while (!vowels.has(chars[left]) && left < right) {
+      left++
     }
-    if (!vowels.includes(list[p2])) {
-      p2--
-      continue
+    while (!vowels.has(chars[right]) && left < right) {
+      right--
     }
-
-    const temp = list[p1]
-    list[p1] = list[p2]
-    list[p2] = temp
-    p1++
-    p2--
+    if (left < right) {
+      [chars[left], chars[right]] = [chars[right], chars[left]]
+      left++
+      right--
+    }
   }
 
-  return list.join('')
+  return chars.join('')
 }
 // @lc code=end
-
-console.log(reverseVowels('hello'))

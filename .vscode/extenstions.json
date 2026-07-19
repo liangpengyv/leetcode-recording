@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "leetcode.vscode-leetcode",
-    "standard.vscode-standard"
+    "standard.vscode-standard",
+    "streetsidesoftware.code-spell-checker"
   ]
 }

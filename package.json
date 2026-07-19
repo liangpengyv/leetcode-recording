@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/liangpengyv/leetcode-recording#readme",
   "devDependencies": {
-    "standard": "^16.0.4"
+    "standard": "^17.1.2"
   }
 }

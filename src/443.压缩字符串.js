@@ -10,36 +10,36 @@
  * @return {number}
  */
 const compress = function (chars) {
-  let a = 1
-  let b = 1
-  let n = 1
-
-  const handle = () => {
-    if (n > 1 && n < 10) {
-      chars[b] = n.toString()
-      b++
-    } else if (n >= 10) {
-      for (const i of n.toString().split('')) {
-        chars[b] = i
-        b++
+  const n = chars.length
+  let write = 0; let left = 0
+  for (let read = 0; read < n; read++) {
+    if (read === n - 1 || chars[read] !== chars[read + 1]) {
+      chars[write++] = chars[read]
+      let num = read - left + 1
+      if (num > 1) {
+        const anchor = write
+        while (num > 0) {
+          chars[write++] = '' + num % 10
+          num = Math.floor(num / 10)
+        }
+        reverse(chars, anchor, write - 1)
       }
+      left = read + 1
     }
   }
-
-  while (a < chars.length) {
-    if (chars[a] === chars[a - 1]) {
-      n++
-    } else {
-      handle()
-      chars[b] = chars[a]
-      b++
-      n = 1
-    }
-    a++
-  }
-  handle()
-  return b
+  return write
 }
+
+const reverse = (chars, left, right) => {
+  while (left < right) {
+    const temp = chars[left]
+    chars[left] = chars[right]
+    chars[right] = temp
+    left++
+    right--
+  }
+}
+
 // @lc code=end
 
 const chars = ['a', 'a', 'b', 'b', 'c', 'c', 'c']

@@ -10,17 +10,28 @@
  * @return {number}
  */
 const pivotIndex = function (nums) {
-  const leftSum = [0]
-  const rightSum = [0]
-  for (let i = 0; i < nums.length - 1; i++) {
-    leftSum.push(leftSum[i] + nums[i])
-    rightSum.unshift(rightSum[rightSum.length - 1 - i] + nums[nums.length - 1 - i])
+  if (nums.length === 1) return 0
+
+  let left = 0
+  let right = 0
+  nums.forEach(num => (right += num))
+  right -= nums[0]
+
+  console.log(left, right)
+
+  if (left === right) return 0
+
+  let index = 0
+  while (index < nums.length) {
+    left += nums[index]
+    index++
+    right -= nums[index]
+
+    console.log(left, right, index)
+
+    if (left === right) return index
   }
-  for (let i = 0; i < nums.length; i++) {
-    if (leftSum[i] === rightSum[i]) {
-      return i
-    }
-  }
+
   return -1
 }
 // @lc code=end

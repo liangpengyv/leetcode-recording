@@ -10,19 +10,19 @@
  * @return {number}
  */
 const maxArea = function (height) {
+  let leftIndex = 0
+  let rightIndex = height.length - 1
   let maxArea = 0
-  let p1 = 0
-  let p2 = height.length - 1
 
-  while (p1 !== p2) {
-    if (height[p1] > height[p2]) {
-      maxArea = Math.max(maxArea, (p2 - p1) * height[p2])
-      p2--
+  while (leftIndex < rightIndex) {
+    maxArea = Math.max(maxArea, (rightIndex - leftIndex) * Math.min(height[leftIndex], height[rightIndex]))
+    if (height[leftIndex] > height[rightIndex]) {
+      rightIndex--
     } else {
-      maxArea = Math.max(maxArea, (p2 - p1) * height[p1])
-      p1++
+      leftIndex++
     }
   }
+
   return maxArea
 }
 // @lc code=end

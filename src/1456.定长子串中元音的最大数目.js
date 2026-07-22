@@ -11,22 +11,21 @@
  * @return {number}
  */
 const maxVowels = function (s, k) {
-  const sList = s.split('')
-  let sum = 0
+  const set = ['a', 'e', 'i', 'o', 'u']
+  const sArr = s.split('')
+  const tagArr = sArr.map(char => set.includes(char) ? 1 : 0)
 
-  const isVowel = (str) => {
-    if (['a', 'e', 'i', 'o', 'u'].includes(str)) return 1
-    else return 0
-  }
+  let max = 0
+  tagArr.slice(0, k).forEach(tag => (max += tag))
 
-  for (let i = 0; i < k; i++) {
-    sum += isVowel(sList[i])
-  }
-
-  let max = sum
-  for (let i = k; i < sList.length; i++) {
-    sum = sum - isVowel(sList[i - k]) + isVowel(sList[i])
-    max = Math.max(max, sum)
+  let left = 0
+  let right = k
+  let current = max
+  while (right < tagArr.length) {
+    current = current - tagArr[left] + tagArr[right]
+    max = Math.max(max, current)
+    left++
+    right++
   }
 
   return max

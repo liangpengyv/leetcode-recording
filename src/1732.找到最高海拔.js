@@ -10,12 +10,12 @@
  * @return {number}
  */
 const largestAltitude = function (gain) {
+  let current = 0
   let max = 0
-  let cur = 0
-  for (let i = 0; i < gain.length; i++) {
-    cur += gain[i]
-    max = Math.max(max, cur)
-  }
+  gain.forEach(h => {
+    current = current += h
+    max = Math.max(max, current)
+  })
   return max
 }
 // @lc code=end

@@ -11,12 +11,20 @@
  * @return {boolean}
  */
 const isSubsequence = function (s, t) {
-  let i = 0
-  for (let j = 0; j < t.length; j++) {
-    if (s[i] === t[j]) i++
-    if (i === s.length) return true
+  const sArr = s.split('')
+  const tArr = t.split('')
+
+  let sIndex = 0
+  let tIndex = 0
+
+  while (sIndex < sArr.length && tIndex < tArr.length) {
+    if (sArr[sIndex] === tArr[tIndex]) {
+      sIndex++
+    }
+    tIndex++
   }
-  return i === s.length
+
+  return sIndex === sArr.length
 }
 // @lc code=end
 

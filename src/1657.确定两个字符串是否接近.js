@@ -11,28 +11,21 @@
  * @return {boolean}
  */
 const closeStrings = function (word1, word2) {
-  const wordList1 = word1.split('')
-  const wordList2 = word2.split('')
-  const wordMap1 = new Map()
-  const wordMap2 = new Map()
-  for (const str of wordList1) {
-    if (wordMap1.has(str)) {
-      wordMap1.set(str, wordMap1.get(str) + 1)
-    } else {
-      wordMap1.set(str, 1)
-    }
+  const map1 = new Map()
+  const map2 = new Map()
+  for (const w of word1) {
+    map1.set(w, (map1.get(w) || 0) + 1)
   }
-  for (const str of wordList2) {
-    if (wordMap2.has(str)) {
-      wordMap2.set(str, wordMap2.get(str) + 1)
-    } else {
-      wordMap2.set(str, 1)
-    }
+  for (const w of word2) {
+    map2.set(w, (map2.get(w) || 0) + 1)
   }
-  return Array.from(wordMap1.values()).sort().toString() === Array.from(wordMap2.values()).sort().toString() && Array.from(wordMap1.keys()).sort().toString() === Array.from(wordMap2.keys()).sort().toString()
+
+  const keyMarry = Array.from(map1.keys()).sort().join('') === Array.from(map2.keys()).sort().join('')
+  const valueMarry = Array.from(map1.values()).sort().join('') === Array.from(map2.values()).sort().join('')
+  return keyMarry && valueMarry
 }
 // @lc code=end
 
-const word1 = 'abc'
-const word2 = 'bca'
+const word1 = 'abbzzca'
+const word2 = 'babzzcz'
 console.log(closeStrings(word1, word2))

@@ -12,21 +12,27 @@
  */
 const maxOperations = function (nums, k) {
   nums.sort((a, b) => a - b)
-  let left = 0
-  let right = nums.length - 1
-  let sum = 0
-  while (left < right) {
-    if (nums[left] + nums[right] < k) {
-      left++
-    } else if (nums[left] + nums[right] > k) {
-      right--
+  console.log(nums)
+  let leftIndex = 0
+  let rightIndex = nums.length - 1
+  let steps = 0
+
+  while (leftIndex < rightIndex) {
+    if (nums[leftIndex] + nums[rightIndex] === k) {
+      steps++
+      leftIndex++
+      rightIndex--
+      continue
+    }
+
+    if (nums[leftIndex] + nums[rightIndex] > k) {
+      rightIndex--
     } else {
-      sum++
-      left++
-      right--
+      leftIndex++
     }
   }
-  return sum
+
+  return steps
 }
 // @lc code=end
 

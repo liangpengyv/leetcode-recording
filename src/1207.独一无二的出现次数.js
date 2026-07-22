@@ -10,21 +10,13 @@
  * @return {boolean}
  */
 const uniqueOccurrences = function (arr) {
-  const occur = new Map()
+  const map = new Map()
   for (const x of arr) {
-    if (occur.has(x)) {
-      occur.set(x, occur.get(x) + 1)
-    } else {
-      occur.set(x, 1)
-    }
+    map.set(x, (map.get(x) || 0) + 1)
   }
 
-  const times = new Set()
-  for (const [, value] of occur) {
-    times.add(value)
-  }
-
-  return times.size === occur.size
+  const set = new Set(map.values())
+  return set.size === map.size
 }
 // @lc code=end
 

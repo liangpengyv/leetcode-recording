@@ -11,14 +11,16 @@
  */
 const removeStars = function (s) {
   const stack = []
-  const sList = s.split('')
-  for (let i = 0; i < sList.length; i++) {
-    if (sList[i] === '*') {
-      stack.pop()
+  const arr = s.split('')
+
+  for (const char of arr) {
+    if (char !== '*') {
+      stack.push(char)
     } else {
-      stack.push(sList[i])
+      stack.pop()
     }
   }
+
   return stack.join('')
 }
 // @lc code=end

@@ -13,19 +13,21 @@
 const findDifference = function (nums1, nums2) {
   const set1 = new Set(nums1)
   const set2 = new Set(nums2)
-  const result1 = new Set()
-  const result2 = new Set()
-  for (const num of nums1) {
-    if (!set2.has(num)) {
-      result1.add(num)
+  const ans1 = []
+  const ans2 = []
+
+  for (const set of set1) {
+    if (!set2.has(set)) {
+      ans1.push(set)
     }
   }
-  for (const num of nums2) {
-    if (!set1.has(num)) {
-      result2.add(num)
+  for (const set of set2) {
+    if (!set1.has(set)) {
+      ans2.push(set)
     }
   }
-  return [Array.from(result1), Array.from(result2)]
+
+  return [ans1, ans2]
 }
 // @lc code=end
 

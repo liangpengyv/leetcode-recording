@@ -10,19 +10,17 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 const moveZeroes = function (nums) {
-  let pre = 0
-  let cur = 0
-  let step = nums.length
-  while (step--) {
-    if (nums[cur] === 0) {
-      cur++
-    } else {
-      const temp = nums[pre]
-      nums[pre] = nums[cur]
-      nums[cur] = temp
-      pre++
-      cur++
+  let front = 0
+  let back = 0
+
+  while (front < nums.length) {
+    if (nums[front] !== 0) {
+      const temp = nums[back]
+      nums[back] = nums[front]
+      nums[front] = temp
+      back++
     }
+    front++
   }
 }
 // @lc code=end
